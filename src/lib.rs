@@ -1,0 +1,28 @@
+extern crate rand;
+#[macro_use]
+extern crate rand_derive;
+
+mod rps;
+
+use rps::{play_hands, utils, Hand};
+use std::error::Error;
+
+pub fn run() -> Result<(), Box<Error>> {
+    println!("Rock, Paper, Scissors?");
+
+    let computer: Hand = rand::random();
+    let player: Hand = loop {
+        if let Ok(s) = utils::readln() {
+            break s;
+        }
+
+        println!("Bad spelling, try again.");
+    };
+
+    let result = play_hands(&player, &computer);
+
+    println!("{} vs {}", player, computer);
+    println!("You {}!", result);
+
+    Ok(())
+}
