@@ -1,10 +1,25 @@
-extern crate rps_rust;
+extern crate rand;
+#[macro_use]
+extern crate rand_derive;
 
-use std::process;
+mod rps;
+
+use rps::{play_hands, utils, Hand};
 
 fn main() {
-    if let Err(e) = rps_rust::run() {
-        println!("{}", e);
-        process::exit(1);
-    }
+    println!("Rock, Paper, Scissors?");
+
+    let computer: Hand = rand::random();
+    let player: Hand = loop {
+        if let Ok(s) = utils::readln() {
+            break s;
+        }
+
+        println!("Bad spelling, try again.");
+    };
+
+    let result = play_hands(&player, &computer);
+
+    println!("{} vs {}", player, computer);
+    println!("You {}!", result);
 }
