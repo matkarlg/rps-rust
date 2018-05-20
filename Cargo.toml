@@ -6,6 +6,8 @@ authors = ["Mathias Karlgren"]
 [dependencies]
 rand = "0.4.2"
 rand_derive = "0.3.1"
+strum = "0.9.0"
+strum_macros = "0.9.0"
 
 [profile.release]
 opt-level = 2

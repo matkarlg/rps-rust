@@ -1,6 +1,3 @@
-use std::fmt;
-use std::str::FromStr;
-
 pub mod utils;
 
 pub fn play_hands(p1: &Hand, p2: &Hand) -> GameResult {
@@ -16,41 +13,16 @@ pub fn play_hands(p1: &Hand, p2: &Hand) -> GameResult {
     }
 }
 
-#[derive(Rand, PartialEq, Debug)]
+#[derive(Display, EnumString, PartialEq, Rand)]
 pub enum Hand {
     Rock,
     Paper,
     Scissors,
 }
 
-#[derive(Debug)]
+#[derive(Display)]
 pub enum GameResult {
     Won,
     Draw,
     Lost,
-}
-
-impl FromStr for Hand {
-    type Err = &'static str;
-
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s {
-            "Rock" => Ok(Hand::Rock),
-            "Paper" => Ok(Hand::Paper),
-            "Scissors" => Ok(Hand::Scissors),
-            _ => Err("not a valid value"),
-        }
-    }
-}
-
-impl fmt::Display for Hand {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:?}", self)
-    }
-}
-
-impl fmt::Display for GameResult {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:?}", self)
-    }
 }

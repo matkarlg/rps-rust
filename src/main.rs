@@ -1,6 +1,9 @@
 extern crate rand;
 #[macro_use]
 extern crate rand_derive;
+extern crate strum;
+#[macro_use]
+extern crate strum_macros;
 
 mod rps;
 
