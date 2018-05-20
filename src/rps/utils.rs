@@ -5,7 +5,7 @@ use std::str::FromStr;
 pub fn readln<T: FromStr>() -> Result<T, T::Err> {
     let mut input = String::new();
     io::stdin().read_line(&mut input).expect("Invalid UTF-8");
-    Ok(input.to_titlecase().trim().parse()?)
+    input.to_titlecase().trim().parse()
 }
 
 // Extend String
