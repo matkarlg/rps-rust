@@ -22,9 +22,7 @@ impl TitleCase for String {
 
         match c.next() {
             None => String::new(),
-            Some(f) => {
-                f.to_uppercase().collect::<String>() + c.collect::<String>().to_lowercase().as_str()
-            }
+            Some(f) => f.to_uppercase().to_string() + c.collect::<String>().to_lowercase().as_str(),
         }
     }
 }
