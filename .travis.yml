@@ -17,6 +17,8 @@ matrix:
         - rustup component add rustfmt-preview
         - cargo install clippy --version $CLIPPY_VERSION || echo "clippy already installed"
       script:
+        - cargo build --verbose
+        - cargo test --verbose
         - cargo fmt -- --unstable-features --check
         - cargo clippy -- -D clippy
 notifications:
