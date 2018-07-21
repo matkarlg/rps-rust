@@ -1,11 +1,13 @@
-extern crate rand;
-extern crate strum;
-#[macro_use]
-extern crate strum_macros;
+// Opt in to unstable features expected for Rust 2018
+#![feature(rust_2018_preview)]
+// Opt in to warnings about new 2018 idioms
+#![warn(rust_2018_idioms)]
 
 mod rps;
+mod utils;
 
-use rps::{play_hands, utils, Hand};
+use self::rps::game::play_hands;
+use self::rps::types::Hand;
 
 fn main() {
 	println!("Rock, Paper, Scissors?");

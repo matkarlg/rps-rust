@@ -1,8 +1,7 @@
 use std::io;
 use std::str::FromStr;
 
-// Safe case-insensitive 'readLn'
-pub fn readln<T: FromStr>() -> Result<T, T::Err> {
+crate fn readln<T: FromStr>() -> Result<T, T::Err> {
 	let mut input = String::new();
 	io::stdin().read_line(&mut input).expect("Invalid UTF-8");
 	input.to_titlecase().trim().parse()
