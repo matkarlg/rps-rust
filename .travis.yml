@@ -7,10 +7,9 @@ rust:
   - nightly
 matrix:
   allow_failures:
-    - rust:
-      - stable
-      - beta
-      - nightly
+    - rust: stable
+    - rust: beta
+    - rust: nightly
   fast_finish: true
   include:
     - rust: nightly-2018-07-13
