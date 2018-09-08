@@ -7,9 +7,7 @@ authors = ["Mathias Karlgren"]
 edition = "2018"
 
 [dependencies]
-rand = "0.5.4"
-strum = "0.10.0"
-strum_macros = "0.10.0"
+rand = "0.5"
 
 [profile.release]
 opt-level = 2
