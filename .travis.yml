@@ -1,5 +1,9 @@
 language: rust
-cache: cargo
+cache:
+  directories:
+    - /home/travis/.cargo
+before_cache:
+  - rm -rf /home/travis/.cargo/registry
 rust:
   - stable
   - beta
