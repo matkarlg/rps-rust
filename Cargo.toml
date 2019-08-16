@@ -1,5 +1,3 @@
-cargo-features = ["edition"]
-
 [package]
 name = "rps-rust"
 version = "0.1.0"
@@ -7,10 +5,8 @@ authors = ["Mathias Karlgren"]
 edition = "2018"
 
 [dependencies]
-rand = "0.5"
+rand = "0.7"
 
 [profile.release]
-opt-level = 2
 lto = true
-debug = false
 panic = "abort"

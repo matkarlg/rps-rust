@@ -1,6 +1,3 @@
-// Opt in to warnings about new 2018 idioms
-#![warn(rust_2018_idioms)]
-
 use rand::{
 	distributions::{Distribution, Standard},
 	Rng,
