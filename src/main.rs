@@ -2,8 +2,7 @@ use rand::{
 	distributions::{Distribution, Standard},
 	Rng,
 };
-use std::io;
-use std::str::FromStr;
+use std::{io, str::FromStr};
 
 fn main() {
 	loop {
