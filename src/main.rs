@@ -1,8 +1,15 @@
+#![feature(once_cell)]
+
 use rand::{
 	distributions::{Distribution, Standard},
 	Rng,
 };
-use std::{io, str::FromStr};
+use regex::Regex;
+use std::{io, str::FromStr, sync::LazyLock};
+
+static ROCK: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^ro?c?k?\s*$").unwrap());
+static PAPER: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^pa?p?e?r?\s*$").unwrap());
+static SCISSORS: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^sc?i?s?s?o?r?s?\s*$").unwrap());
 
 fn main() {
 	loop {
@@ -42,10 +49,10 @@ impl FromStr for Choice {
 	type Err = ();
 
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
-		match s.trim().to_lowercase().as_str() {
-			"r" | "rock" => Ok(Choice::Rock),
-			"p" | "paper" => Ok(Choice::Paper),
-			"s" | "scissors" => Ok(Choice::Scissors),
+		match s {
+			_ if ROCK.is_match(s) => Ok(Choice::Rock),
+			_ if PAPER.is_match(s) => Ok(Choice::Paper),
+			_ if SCISSORS.is_match(s) => Ok(Choice::Scissors),
 			_ => Err(()),
 		}
 	}
@@ -54,7 +61,7 @@ impl FromStr for Choice {
 // A random instance of Choice can be created.
 impl Distribution<Choice> for Standard {
 	fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Choice {
-		match rng.gen_range(0, 3) {
+		match rng.gen_range(0..3) {
 			0 => Choice::Rock,
 			1 => Choice::Paper,
 			_ => Choice::Scissors,

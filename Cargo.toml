@@ -2,11 +2,12 @@
 name = "rps-rust"
 version = "0.1.0"
 authors = ["Mathias Karlgren"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
-rand = "0.7"
+rand = "0.8"
+regex = "1.7"
 
 [profile.release]
 lto = true
-panic = "abort"
+strip = "debuginfo"
