@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: dtolnay/rust-toolchain@master
-        with:
-          toolchain: nightly-2022-11-19
+      with:
+        toolchain: nightly-2022-11-19
     - uses: taiki-e/install-action@nextest
     - uses: Swatinem/rust-cache@v2
       with:
