@@ -1,2 +1,2 @@
 # rps-rust
-[![Build Status](https://travis-ci.org/matkarlg/rps-rust.svg?branch=master)](https://travis-ci.org/matkarlg/rps-rust)
+[![Build Status](https://github.com/matkarlg/rps-rust/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/matkarlg/rps-rust/actions)
