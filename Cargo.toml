@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 rand = "0.8"
-strum = { version = "0.24", features = ["derive"] }
+strum = { version = "0.25", features = ["derive"] }
 
 [profile.release]
 lto = true
