@@ -2,22 +2,22 @@
 name = "rps-rust"
 version = "0.1.0"
 authors = ["Mathias Karlgren"]
-edition = "2021"
-rust-version = "1.59"
+edition = "2024"
 publish = false
 
 [dependencies]
-rand = "0.8"
-strum = { version = "0.24", features = ["derive"] }
+rand = "0.9"
+strum = { version = "0.27", features = ["derive"] }
 
-[profile.release]
-lto = true
-strip = "debuginfo"
+[lints.rust]
+future-incompatible = "deny"
+rust-2018-idioms = "deny"
+unsafe-code = "deny"
+variant-size-differences = "warn"
+missing-debug-implementations = "warn"
+missing-docs = "warn"
+unreachable-pub = "warn"
 
-[profile.x86_64-unknown-linux-gnu]
-inherits = "release"
-strip = true
-panic = "abort"
-codegen-units = 1
-opt-level = "s"
-# cargo build --release -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort --target x86_64-unknown-linux-gnu
+[lints.clippy]
+all = "deny"
+pedantic = "warn"

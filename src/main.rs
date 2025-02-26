@@ -1,9 +1,13 @@
+//! A simple Rock, Paper, Scissors game.
+
 use rand::seq::IteratorRandom;
 use std::{io, str::FromStr};
 use strum::{EnumIter, IntoEnumIterator};
 
 fn main() {
-	let mut rng = rand::thread_rng();
+	use self::Choice as C;
+
+	let mut rng = rand::rng();
 
 	loop {
 		let computer = Choice::iter().choose(&mut rng).unwrap();
@@ -15,18 +19,19 @@ fn main() {
 
 			match input.parse() {
 				Ok(s) => break s,
-				Err(_) => println!("Bad spelling, try again."),
+				Err(()) => println!("Bad spelling, try again."),
 			}
 		};
 
 		println!("{:?} vs {:?}", &player, &computer);
 
-		use self::Choice::*;
 		match (&player, &computer) {
-			(Paper, Rock) | (Scissors, Paper) | (Rock, Scissors) => println!("You Win"),
+			(C::Paper, C::Rock) | (C::Scissors, C::Paper) | (C::Rock, C::Scissors) => {
+				println!("You Win");
+			}
 			_ if player == computer => println!("Tie, Replay!"),
 			_ => println!("Computer Wins!"),
-		};
+		}
 	}
 }
 
@@ -37,7 +42,6 @@ enum Choice {
 	Scissors,
 }
 
-// Choice can be parsed from a String.
 impl FromStr for Choice {
 	type Err = ();
 
